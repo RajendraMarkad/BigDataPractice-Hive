@@ -14,9 +14,9 @@ describe department_data;
 
 describe formatted department_data;
 
-# For data load from local
-load data local inpath 'file:///tmp/hive_class/depart_data.csv' into table department_data; 
-
+# For data load from local to hive
+load data local inpath 'file:///tmp/hive_class/depart_data.csv' into table department_data;  
+                        
 # Display column name
 set hive.cli.print.header = true;
 
