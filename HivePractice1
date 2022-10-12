@@ -20,7 +20,7 @@ load data local inpath 'file:///tmp/hive_class/depart_data.csv' into table depar
 # importing data into hive table from external s3 bucket url link
  load data local inpath 's3://bucketname/path/subpath/depart_data.csv' into table department_data; 
  
-# Display column name
+# Display column name--> aftet this setting query we can see columns name by same query as: select * from department_data;
 set hive.cli.print.header = true;
 
 # Load data from hdfs location
