@@ -16,7 +16,10 @@ describe formatted department_data;
 
 # For data load from local to hive
 load data local inpath 'file:///tmp/hive_class/depart_data.csv' into table department_data;  
-                        
+#simillarly
+# importing data into hive table from external s3 bucket url link
+ load data local inpath 's3://bucketname/path/subpath/depart_data.csv' into table department_data; 
+ 
 # Display column name
 set hive.cli.print.header = true;
 
