@@ -39,7 +39,10 @@ create external table department_data_external
     > row format delimited                                                                                                                    
     > fields terminated by ','                                                                                                                
     > location '/tmp/hive_data_class_2/'; 
-    
+ 
+ ##to know diff bet External table and Internal Table in hive
+ database : hive_class_b1;  --->present tables: department_data, department_data_external, department_data_from_hdfs 
+ hadoop fs -ls /user/hive/warehouse/hive_class_b1.db ----> department_data, department_data_from_hdfs ==this are only the internal/managed tables present in hdfs warehouse location
     
     
 # work with Array data types
@@ -68,6 +71,7 @@ select
     > array_contains(skills,"HADOOP") as knows_hadoop,                                                                                        
     > sort_array(skills) as sorted_array                                                                                                                     
     > from employee; 
+   
     
     
 # table for map data
