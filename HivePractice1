@@ -1,3 +1,4 @@
+#enter hive command in Putty
 create database hive_class_b1;
 use hive_class_b1;
 
@@ -12,19 +13,20 @@ create table department_data
     
 describe department_data;
 
-describe formatted department_data;
+#to know all inf about table created(data type, location, internal/external table, storage)
+describe formatted department_data; 
 
 # For data load from local to hive
-load data local inpath 'file:///tmp/hive_class/depart_data.csv' into table department_data;  
-#simillarly
+load data local inpath 'file:///tmp/hive_class/depart_data.csv' into table department_data;  ----> don't need to specify destination location bcoz it will auto stored in user/hive/warehouse of hdfs location  
+#or simillarly
 # importing data into hive table from external s3 bucket url link
- load data local inpath 's3://bucketname/path/subpath/depart_data.csv' into table department_data; 
+ load data local inpath 's3://bucketname/path/subpath/depart_data.csv' into table department_data; ----> don't need to specify destination location bcoz it will auto stored in user/hive/warehouse of hdfs location  
  
 # Display column name--> aftet this setting query we can see columns name by same query as: select * from department_data;
 set hive.cli.print.header = true;
 
 # Load data from hdfs location
-load data inpath '/tmp/hive_data_class_2/' into table department_data_from_hdfs;
+load data inpath '/tmp/hive_data_class_2/' into table department_data_from_hdfs;  ----> don't need to specify destination location bcoz it will auto stored in user/hive/warehouse of hdfs location  
 
 
 # Create external table 
@@ -42,8 +44,8 @@ create external table department_data_external
  
  ##to know diff bet External table and Internal Table in hive
  database : hive_class_b1;  --->present tables: department_data, department_data_external, department_data_from_hdfs 
- hadoop fs -ls /user/hive/warehouse/hive_class_b1.db ----> department_data, department_data_from_hdfs ==this are only the internal/managed tables present in hdfs warehouse location
-    
+ hadoop fs -ls /user/hive/warehouse/hive_class_b1.db ----> department_data, department_data_from_hdfs ==this are only the internal/managed tables present in hdfs user/hive/warehouse location
+ hadoop fs -ls /tmp/hive_data_class_2    ---->  department_data_external 
     
 # work with Array data types
 
