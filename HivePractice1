@@ -49,9 +49,7 @@ create external table department_data_external
     
 
 
-# work with Array data types
-
-
+### work with Array data types
 
 create table employee                                                                                                                   
     > (                                                                                                                                       
@@ -67,7 +65,6 @@ load data local inpath 'file:///tmp/hive_class/array_data.csv' into table employ
 
 
 # Get element by index in hive array data type
-
 select id, name, skills[0] as prime_skill from employee;
 
 select                                                                                                                                  
