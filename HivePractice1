@@ -16,7 +16,7 @@ describe department_data;
 #to know all inf about table created(data type, location, internal/external table, storage)
 describe formatted department_data; 
 
-# For data load from local to hive
+# For data load from local to hive engine
 load data local inpath 'file:///tmp/hive_class/depart_data.csv' into table department_data;  ----> don't need to specify destination location bcoz it will auto stored in user/hive/warehouse of hdfs location  
 #or simillarly
 # importing data into hive table from external s3 bucket url link
