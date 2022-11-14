@@ -1,0 +1,36 @@
+# serialization and deserialization of data
+# first load data as csv in hive table by load command
+
+create table sales_data_v2                                                                                                              
+    > (                                                                                                                                       
+    > p_type string,                                                                                                                          
+    > total_sales int                                                                                                                         
+    > )                                                                                                                                       
+    > row format delimited                                                                                                                    
+    > fields terminated by ','; 
+    
+    
+load data local inpath 'file:///tmp/hive_class/sales_data_raw.csv' into table sales_data_v2; 
+
+# command to create identical table as backup if any miskake happen with original 
+create table sales_data_v2_bkup as select * from sales_data_v2;
+
+# describe command for a table
+describe extended sales_data_v2;
+
+
+# create a table which will store data in parquet
+
+create table sales_data_pq_final                                                                                                        
+    > (                                                                                                                                       
+    > product_type string,                                                                                                                    
+    > total_sales int                                                                                                                         
+    > )                                                                                                                                       
+    > stored as parquet;  
+    
+# load data in parquet file
+from sales_data_v2 insert overwrite table sales_data_pq_final select *;
+
+#conclusion: csv data inserted into hive table( sales_data_v2 ) and then sales_data_v2(csv format)  data inserted into sales_data_pq_final but in parquet format with same attribute
+now after running cat command on sales_data_pq_final we can't able to see the data as earlier(garbage data showing) because it is not compatible with file format
+
