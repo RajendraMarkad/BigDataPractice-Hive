@@ -114,9 +114,7 @@ stored as orc;
 # copy data from sales_order_data_csv_v1 to sales_order_data_orc
 
 
-select year_id, sum(sales) as total_sales from sales_order_data_orc group by year_id; 
-
-# here only 1 map and 1 reduce task will get created
+select year_id, sum(sales) as total_sales from sales_order_data_orc group by year_id; ---># here only 1 map and 1 reduce task will get created
 
 In order to change the average load for a reducer (in bytes):                                                                                 
   set hive.exec.reducers.bytes.per.reducer=<number>                                                                                           
@@ -139,7 +137,11 @@ ar_id;
  create table sales_order_grouped_orc_v2 stored as orc as select year_id, sum(sales) as total_sales from sales_order_data_orc group by ye
 ar_id;
 
-# after creating the table, check the number of files in hdfs location
+# after creating the table, check the number of files in hdfs location--> by hadoop fs command which shows how many reducers/chunks/parts of data storage created while executing query-->0000_0, 00001_0,....
+#Done
+
+
+
 
 
 # set this property if doing static partition
