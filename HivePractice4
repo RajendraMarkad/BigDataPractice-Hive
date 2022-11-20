@@ -61,7 +61,7 @@ set hive.enforce.bucketing=true;
     > )                                                                                                                                       
     > clustered by (id)                                                                                                                       
     > sorted by (id)                                                                                                                          
-    > into 2 buckets;
+    > into 2 buckets;    
     
 insert overwrite table buck_users select * from users;
     
@@ -72,10 +72,12 @@ hive> create table buck_locations
     > )                                                                                                                                       
     > clustered by (id)                                                                                                                       
     > sorted by (id)                                                                                                                          
-    > into 2 buckets; 
+    > into 2 buckets;   
     
  insert overwrite table buck_locations select * from locations;
  
+ #to see how data stored in hdfs warehouse
+ hadoop fs -ls /users/hive/warehouse/hive_class.db/buck_users/     ----->2 items will show named as 000000_0 and 000001_0
  
  
  
