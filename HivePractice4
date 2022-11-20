@@ -26,6 +26,8 @@ hive> select transform(country,ordernumber,quantityordered)
     
 # use below hive statements for bucketing
 
+hive> set hive.cli.print.header=true; ---> To print header along with the output, the following hive conf property should be set to true before executing the query.
+
 hive> create table users                                                                                                                      
     > (                                                                                                                                       
     > id int,                                                                                                                                 
