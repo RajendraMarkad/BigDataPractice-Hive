@@ -1,5 +1,5 @@
 #create python file with user defined script 
-vim multiply_udf.py  ----> esc + :q! --> to save and exit
+vim multiply_udf.py  ----> esc + :wq --> to save and exit
 
 # add udf in hive shell
 
